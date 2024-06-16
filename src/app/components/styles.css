@@ -1,0 +1,32 @@
+button {
+  border: none;
+  height: 48px;
+  min-width: 120px;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #b8dfff;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #3ba6ff;
+}
+
+button:active {
+  background-color: #155387;
+  color: white;
+}
+
+.counter {
+  height: fit-content;
+  display: flex;
+  align-items: center;
+}
+
+.count {
+  font-size: 48px;
+  font-weight: 600;
+  padding: 0 12px;
+  min-width: 120px;
+  text-align: center;
+}
