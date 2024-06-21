@@ -1,11 +1,11 @@
 button {
   border: none;
-  height: 48px;
-  min-width: 120px;
-  border-radius: 8px;
+  height: 60px;
+  min-width: 60px;
+  border-radius: 120px;
   cursor: pointer;
   background-color: #b8dfff;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 button:hover {
@@ -29,4 +29,9 @@ button:active {
   padding: 0 12px;
   min-width: 120px;
   text-align: center;
+}
+
+.reset {
+  background-color: #8d1313;
+  color: white;
 }
