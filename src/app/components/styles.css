@@ -17,6 +17,19 @@ button:active {
   color: white;
 }
 
+button:disabled {
+  background-color: gray;
+  color: lightgray;
+  cursor: not-allowed;
+}
+
+.counter-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+}
+
 .counter {
   height: fit-content;
   display: flex;
