@@ -3,7 +3,7 @@ import { useCallback, useLayoutEffect, useState } from 'react';
 import './styles.css';
 
 /**
- * HomeWork 1:
+ * HomeWork:
  * 1) Значение каунтера не должно быть отрицательным.
  * 2) Добавить кнопку обнуления каунтера.
  * 3) Добавить кнопки изменения значения на +10 и -10.
