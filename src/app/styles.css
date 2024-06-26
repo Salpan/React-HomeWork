@@ -6,6 +6,8 @@ header {
 
 main {
   display: flex;
+  flex-direction: column;
+  row-gap: 20px;
   flex-grow: 1;
 }
 

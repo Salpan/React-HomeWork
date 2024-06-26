@@ -1,4 +1,5 @@
-import { Counter } from './components/Counter';
+import { Counter } from './components/counter/Counter';
+import UserList from './components/user-list/userList';
 
 import './styles.css';
 
@@ -10,6 +11,7 @@ const App = () => {
       </header>
       <main>
         <Counter />
+        <UserList />
       </main>
       <footer>8 800 555 35-35</footer>
     </div>
