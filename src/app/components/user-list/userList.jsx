@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import './styles.css'
+import { Loader } from "../../../common/components/Loader/Loader"
 
 const url = 'https://jsonplaceholder.typicode.com/users'
 
@@ -32,7 +33,7 @@ const UserList = () => {
 
         <div>
             <h1>User List</h1>
-            {isLoading && <span class="loader"></span>}
+            <Loader loading={isLoading} />
             {!isLoading && <ol className="userList">
                 {userList.map((user) => {
                     return <li key={user.id}>{user.name}</li>
