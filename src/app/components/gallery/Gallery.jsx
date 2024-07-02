@@ -1,48 +1,61 @@
-import { useCallback, useEffect, useState } from "react"
-import { Loader } from "../../../common/components/Loader/Loader"
-import './styles.css'
+import { useCallback, useEffect, useState } from 'react';
 
-const url = 'https://jsonplaceholder.typicode.com/photos'
+import './styles.css';
+import { Loader } from '../../../common/components/loader/Loader';
+import { Link } from 'react-router-dom';
+
+const url = 'https://jsonplaceholder.typicode.com/photos';
 
 const Gallery = () => {
-    const [photoId, setPhotoId] = useState(2)
-    const [photoUrl, setPhotoUrl] = useState('')
-    const [isLoading, setIsLoading] = useState(false)
+    const [photoId, setPhotoId] = useState(1);
+    const [photoUrl, setPhotoUrl] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        setIsLoading(false)
+        setIsLoading(true);
 
         fetch(`${url}/${photoId}`)
-            .then((resolve) => resolve.json())
-            .then((data) => setPhotoUrl(data.url))
-    }, [photoUrl])
+            .then((r) => r.json())
+            .then((data) => {
+                setPhotoUrl(data.url);
+                setIsLoading(false);
+            });
+    }, [photoId]);
 
-    const previusPhotoHandler = useCallback(() => {
+    const previousPhotoHandler = useCallback(() => {
         setPhotoId((prev) => {
             if (prev <= 1) {
-                return 1
+                return 1;
             }
 
-            return prev - 1
-        })
-    }, [])
+            return prev - 1;
+        });
+    }, []);
 
     const nextPhotoHandler = useCallback(() => {
-        setPhotoId((prev) => prev + 1)
-    }, [])
+        setPhotoId((prev) => prev + 1);
+    }, []);
 
     return (
         <>
-            <button type="button" onClick={previusPhotoHandler}>
-                {'<-'}
-            </button>
-            <img src={photoUrl} />
-            <Loader loading={isLoading} />
-            <button type="button" onClick={nextPhotoHandler}>
-                {'->'}
-            </button>
+            <Link to="/">Root</Link>
+            <div className="gallery">
+                <button type="button" onClick={previousPhotoHandler}>
+                    {'<-'}
+                </button>
+                <div className="photo">
+                    {!isLoading ? (
+                        <img src={photoUrl} alt={`#${photoId}`} />
+                    ) : (
+                        <Loader loading={isLoading} />
+                    )}
+                </div>
+                <button type="button" onClick={nextPhotoHandler}>
+                    {'->'}
+                </button>
+            </div>
         </>
-    )
-}
+    );
+};
 
-export default Gallery
+export default Gallery;

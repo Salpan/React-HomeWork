@@ -1,0 +1,7 @@
+.link {
+  display: flex;
+  column-gap: 16px;
+  background-color: #85a1fd;
+  color: rgb(0, 0, 0);
+  padding: 20px 20px;
+}
