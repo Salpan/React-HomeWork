@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react"
 import './styles.css'
 import { Loader } from "../../../common/components/loader/Loader"
-import { Link } from 'react-router-dom';
+import { Main } from "../main/Main";
 
 const url = 'https://jsonplaceholder.typicode.com/users'
 
@@ -32,7 +32,7 @@ const UserList = () => {
 
     return (
         <>
-            <Link to="/gallery">Gallery</Link>
+            <Main />
             <button type="button" onClick={clickHandler}>
                 Reload
             </button>

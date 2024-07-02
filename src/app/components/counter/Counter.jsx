@@ -1,6 +1,7 @@
 import { useCallback, useLayoutEffect, useState } from 'react';
 
 import './styles.css';
+import { Main } from '../main/Main';
 
 /**
  * HomeWork:
@@ -66,25 +67,28 @@ export const Counter = () => {
   }, [count]);
 
   return (
-    <div className="counter-wrapper">
-      <div className="counter">
-        <button type="button" onClick={minusTen} disabled={isDisabledDec}>
-          -10
-        </button>
-        <button type="button" onClick={dec} disabled={isDisabledDec}>
-          -1
-        </button>
-        <div className="count">{count}</div>
-        <button type="button" onClick={inc} disabled={isDisabledInc}>
-          +1
-        </button>
-        <button type="button" onClick={plusTen} disabled={isDisabledInc}>
-          +10
+    <>
+      <Main />
+      <div className="counter-wrapper">
+        <div className="counter">
+          <button type="button" onClick={minusTen} disabled={isDisabledDec}>
+            -10
+          </button>
+          <button type="button" onClick={dec} disabled={isDisabledDec}>
+            -1
+          </button>
+          <div className="count">{count}</div>
+          <button type="button" onClick={inc} disabled={isDisabledInc}>
+            +1
+          </button>
+          <button type="button" onClick={plusTen} disabled={isDisabledInc}>
+            +10
+          </button>
+        </div>
+        <button className="reset" type="button" onClick={reset} disabled={isDisabledDec}>
+          0
         </button>
       </div>
-      <button type="button" onClick={reset} disabled={isDisabledDec}>
-        0
-      </button>
-    </div>
+    </>
   );
 };
