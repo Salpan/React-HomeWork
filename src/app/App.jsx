@@ -6,6 +6,7 @@ import { Main } from './components/main/Main';
 
 import './styles.css';
 import { Layout } from '../common/components/layout/Layout';
+import { Feed } from './components/feed/Feed';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/userlist" element={<UserList />} />
           <Route path="/counter" element={<Counter />} />
+          <Route path="/posts" element={<Feed />} />
         </Routes>
       </BrowserRouter>
     </Layout>

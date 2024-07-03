@@ -1,0 +1,16 @@
+ul {
+    list-style-type: none;
+    background: rgb(240, 241, 240);
+    border: 1px solid #aaa8a8;
+    width: 600px;
+    border-radius: 15px;
+    padding: 25px 20px;
+    margin-left: 30%;
+    box-shadow: 10px 5px 5px #aaa8a8;
+}
+
+.paragraph {
+    font-size: larger;
+    font-weight: bold;
+    text-align: left;
+}
