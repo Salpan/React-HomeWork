@@ -14,3 +14,17 @@ ul {
     font-weight: bold;
     text-align: left;
 }
+
+.sort {
+    background-color: #85a1fd;
+    max-width: 50px;
+    font-size: xx-large;
+    font-weight: 1000;
+}
+
+.noSort {
+    background-color: #aaa8a8;
+    max-width: 50px;
+    font-size: xx-large;
+    font-weight: 1000;
+}

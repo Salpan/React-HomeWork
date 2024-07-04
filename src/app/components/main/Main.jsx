@@ -12,7 +12,6 @@ export const Main = () => {
         <Link to="/userlist">User List</Link>
         <Link to="/counter">Counter</Link>
         <Link to="/posts">Posts</Link>
-        <Link to="/">Root</Link>
       </div>
     </>
   )

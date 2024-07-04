@@ -16,6 +16,10 @@ footer {
   height: 40px;
   display: flex;
   align-items: center;
+  margin-left: 42%;
+  margin-bottom: 2%;
+  font-size: large;
+  font: italic 1.2rem "Fira Sans", serif;
 }
 
 .wrapper {

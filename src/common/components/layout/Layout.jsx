@@ -6,12 +6,12 @@ export const Layout = ({ children }) => {
     return (
         <div className="wrapper">
             <header>
-                <h1>React App</h1>
+                <h1>Welcome to my first React App</h1>
             </header>
             <main>
                 {children}
             </main>
-            <footer>8 800 555 35-35</footer>
+            <footer>Made by: Mentor Shut56 and Salpan</footer>
         </div>
     );
 };

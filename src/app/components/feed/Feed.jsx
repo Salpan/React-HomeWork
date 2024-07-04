@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Main } from "../main/Main"
 import './styles.css'
 
@@ -7,32 +7,43 @@ const url = 'https://jsonplaceholder.typicode.com/posts'
 export const Feed = () => {
 
     const [post, setPost] = useState([])
-    // const [onClick, setOnClick] = useState(true)
+    const [isClick, setIsClick] = useState(true)
 
-
-    fetch(url)
-        .then((r) => r.json())
-        .then((data) => {
-            return setPost(data)
-        })
-
-
-
-    const onClick = useCallback(() => {
+    useEffect(() => {
         fetch(url)
             .then((r) => r.json())
             .then((data) => {
-                data.reverse()
                 return setPost(data)
             })
     }, [])
 
-
+    const onClick = () => {
+        setIsClick(prev => !prev)
+        if (isClick === true) {
+            fetch(url)
+                .then((r) => r.json())
+                .then((data) => {
+                    data.reverse()
+                    return setPost(data)
+                })
+        } else {
+            fetch(url)
+                .then((r) => r.json())
+                .then((data) => {
+                    return setPost(data)
+                })
+        }
+    }
 
     return (
         <>
             <Main />
-            <button type="button" onClick={onClick}></button>
+            <button className={
+                isClick === true ? "sort" : "noSort"
+            }
+                type="button" onClick={onClick}>
+                {isClick === true ? `↑` : `↓`}
+            </button >
             {post.map((post) => {
                 return (
                     <ul>
@@ -44,8 +55,8 @@ export const Feed = () => {
                         </li>
                     </ul>
                 )
-            })}
-
+            })
+            }
         </>
     )
 }
