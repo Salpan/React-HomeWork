@@ -1,0 +1,11 @@
+table,
+th,
+td {
+    border: 1px solid;
+    max-width: 600px;
+    border-collapse: collapse
+}
+
+button {
+    width: 200px;
+}
