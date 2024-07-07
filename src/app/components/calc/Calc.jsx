@@ -7,6 +7,8 @@
  * 5) Добавить input, в который будет выводиться промежуточное значение.
  */
 
+// Example: https://github.com/shut56/chat/blob/master/client/components/common/message-input.js
+
 // [
 //     {
 //         label: "0",
