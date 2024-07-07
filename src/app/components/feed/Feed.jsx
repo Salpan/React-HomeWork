@@ -11,26 +11,13 @@ export const Feed = () => {
     fetch(url)
       .then((r) => r.json())
       .then((data) => {
-        return setPost(data);
+        setPost(data);
       });
   }, []);
 
   const onClick = () => {
     setIsClick((prev) => !prev);
-    if (isClick === true) {
-      fetch(url)
-        .then((r) => r.json())
-        .then((data) => {
-          data.reverse();
-          return setPost(data);
-        });
-    } else {
-      fetch(url)
-        .then((r) => r.json())
-        .then((data) => {
-          return setPost(data);
-        });
-    }
+    setPost((prev) => prev.reverse());
   };
 
   return (
