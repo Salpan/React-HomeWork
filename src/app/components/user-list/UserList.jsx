@@ -1,38 +1,35 @@
-import { useCallback, useEffect, useState } from "react"
-import './styles.css'
-import { Loader } from "../../../common/components/loader/Loader"
-import { Main } from "../main/Main";
+import { useCallback, useEffect, useState } from "react";
+import "./styles.css";
+import { Loader } from "../../../common/components/loader/Loader";
 
-const url = 'https://jsonplaceholder.typicode.com/users'
+const url = "https://jsonplaceholder.typicode.com/users";
 
 const UserList = () => {
-
-    const [userList, setUserList] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [reload, setReload] = useState(false)
+    const [userList, setUserList] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [reload, setReload] = useState(false);
 
     const clickHandler = useCallback(() => {
-        setReload((prev) => !prev)
-    }, [])
+        setReload((prev) => !prev);
+    }, []);
 
     useEffect(() => {
-        setIsLoading(true)
+        setIsLoading(true);
         fetch(url)
             .then((r) => r.json())
             .then((data) => {
                 setTimeout(() => {
-                    setUserList(data)
-                }, 2000)
-            })
-    }, [reload])
+                    setUserList(data);
+                }, 2000);
+            });
+    }, [reload]);
 
     useEffect(() => {
-        setIsLoading(userList.length === 0)
-    }, [userList])
+        setIsLoading(userList.length === 0);
+    }, [userList]);
 
     return (
         <>
-            <Main />
             <button type="button" onClick={clickHandler}>
                 Reload
             </button>
@@ -64,4 +61,4 @@ const UserList = () => {
     );
 };
 
-export default UserList
+export default UserList;
