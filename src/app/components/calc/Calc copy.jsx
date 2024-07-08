@@ -7,6 +7,8 @@
  * 5) Добавить input, в который будет выводиться промежуточное значение.
  */
 
+import { useState } from "react";
+
 // Example: https://github.com/shut56/chat/blob/master/client/components/common/message-input.js
 
 // [
@@ -30,8 +32,6 @@
 //
 // <input onChange={onChangeHandler} />
 
-import { useState } from "react";
-
 const array = [
     {
         label: "0",
@@ -44,8 +44,8 @@ const array = [
         type: "numeric"
     },
     {
-        label: "reset",
-        value: 'AC',
+        label: "2",
+        value: 2,
         type: "numeric"
     },
 ]
@@ -54,13 +54,11 @@ export const Calc = () => {
 
     const [calc, setCalc] = useState('0')
 
-    const cliclHandler = (value) => {
-        if (value !== "AC")
-            setCalc((prev => prev + value))
-        else {
-            setCalc('0')
-        }
+    const cliclHandler = (label) => {
+        setCalc((prev => prev + label))
     }
+
+
 
     return (
         <>
@@ -68,8 +66,8 @@ export const Calc = () => {
             <input />
             {array.map((number) => {
                 return (
-                    <button key={number.value} type="button" onClick={() => cliclHandler(number.value)}>
-                        {number.label}
+                    <button type="button" onClick={() => cliclHandler(number.label)}>
+                        {number.value}
                     </button >
                 );
             })}

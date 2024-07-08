@@ -6,6 +6,7 @@ import UserList from "./components/user-list/UserList";
 import { Layout } from "../common/components/layout/Layout";
 import { Feed } from "./components/feed/Feed";
 import { Main } from "./components/main/Main";
+import { Calc } from "./components/calc/Calc";
 
 const App = () => {
     return (
@@ -13,7 +14,7 @@ const App = () => {
             <Layout>
                 <Routes>
                     <Route path="/*" element={<Main />}>
-                        <Route element={<Gallery />} index={true} />
+                        <Route element={<Calc />} index={true} />
                         <Route path="gallery" element={<Gallery />} />
                         <Route path="userlist" element={<UserList />} />
                         <Route path="counter" element={<Counter />} />
