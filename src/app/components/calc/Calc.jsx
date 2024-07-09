@@ -31,49 +31,42 @@
 // <input onChange={onChangeHandler} />
 
 import { useState } from "react";
+import { arrayCalc } from "./data"
 
-const array = [
-    {
-        label: "0",
-        value: 0,
-        type: "numeric"
-    },
-    {
-        label: "1",
-        value: 1,
-        type: "numeric"
-    },
-    {
-        label: "reset",
-        value: 'AC',
-        type: "numeric"
-    },
-]
+// eval(arr.reduce((acc, item) => {
+//     acc = acc + item
+//     return acc
+// }))
 
 export const Calc = () => {
 
-    const [calc, setCalc] = useState('0')
+    // const [calc, setCalc] = useState('')
+    const [outPut, setOutPut] = useState('')
 
-    const cliclHandler = (value) => {
-        if (value !== "AC")
-            setCalc((prev => prev + value))
-        else {
-            setCalc('0')
-        }
+
+    const cliclHandler = (value, label) => {
+        // setCalc(prev => prev + value)
+
+        if (value === "AC")
+            setOutPut('')
+        else if (value === '=') {
+            // setOutPut(eval(JSON.parse(JSON.stringify(outPut))))
+            setOutPut('')
+        } else setOutPut((prev => prev + label))
     }
 
     return (
         <>
-            <p>{calc}</p>
+            <p>{outPut}</p>
             <input />
-            {array.map((number) => {
+            {arrayCalc.map((item) => {
                 return (
-                    <button key={number.value} type="button" onClick={() => cliclHandler(number.value)}>
-                        {number.label}
+                    <button key={item.value} type="button" onClick={
+                        () => cliclHandler(item.value, item.label)}>
+                        {item.label}
                     </button >
                 );
             })}
-
         </>
     )
 }
