@@ -30,7 +30,7 @@
 //
 // <input onChange={onChangeHandler} />
 
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { arrayCalc } from './consts';
 import './styles.css';
 
@@ -39,6 +39,7 @@ export const Calc = () => {
     const [curr, setCurr] = useState('0');
     const [operator, setOperator] = useState(null);
     const [total, setTotal] = useState(false);
+    const [errorText, setErrorText] = useState('');
 
     const onChangeHandler = useCallback((e) => {
         setCurr(e.target.value);
@@ -89,12 +90,16 @@ export const Calc = () => {
                 case '-':
                     calculatedValue = parseInt(prev) - parseInt(curr);
                     break;
+                case '=': {
+                    calculatedValue = curr;
+                    break;
+                }
                 default:
                     return;
             }
 
-            setPrev(calculatedValue);
-            setCurr(calculatedValue);
+            setPrev(String(calculatedValue));
+            setCurr(String(calculatedValue));
         },
         [curr, operator, prev],
     );
@@ -108,7 +113,7 @@ export const Calc = () => {
                 return;
             }
 
-            if (prev !== '0') {
+            if (prev !== '0' && curr !== prev) {
                 equals(label);
             } else {
                 setPrev(curr);
@@ -120,6 +125,7 @@ export const Calc = () => {
     const reset = useCallback(() => {
         setPrev('0');
         setCurr('0');
+        setOperator(null);
     }, []);
 
     const onClickHandler = useCallback(
@@ -167,21 +173,32 @@ export const Calc = () => {
         [],
     );
 
+    useEffect(() => {
+        const max = Number.MAX_SAFE_INTEGER;
+        if (prev >= max || curr >= max) {
+            setErrorText('More then safe integer');
+        } else {
+            setErrorText('');
+        }
+    }, [prev, curr]);
+
     return (
         <div className="container">
             <div className="calc-wrapper">
                 <div className="calc">
-                    <div className="input">
-                        {curr !== '' || curr === '0' ? curr : prev}
+                    <div className="operation-view">
+                        {prev !== '0' && <span>{prev}</span>}
+                        {operator && <span> {operator}</span>}
                     </div>
-                    <div>Prev: {prev}</div>
-                    <div>Curr: {curr}</div>
                     <input
                         type="number"
                         value={curr}
                         onChange={onChangeHandler}
                         className="input"
                     />
+                    {errorText && (
+                        <span style={{ color: 'red' }}>{errorText}</span>
+                    )}
                     <div className="calc-buttons">
                         {arrayCalc.map((item, index) => {
                             return (
@@ -190,6 +207,9 @@ export const Calc = () => {
                                     className={`base-button ${buttonClassName(item.type)}`}
                                     type="button"
                                     onClick={onClickHandler(item)}
+                                    disabled={
+                                        item.type !== 'reset' && errorText
+                                    }
                                 >
                                     {item.label}
                                 </button>

@@ -32,7 +32,10 @@ input[type='number'] {
 }
 
 .input {
-    padding: 0;
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 12px;
     background-color: white;
     height: 48px;
     border: 1px;
@@ -108,4 +111,13 @@ input[type='number'] {
 
 .base-button.equal-button:active {
     background-color: rgb(70, 94, 158);
+}
+
+.operation-view {
+    height: 20px;
+    font-size: 14px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    color: gray;
 }
