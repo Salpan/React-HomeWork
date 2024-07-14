@@ -69,20 +69,22 @@ export const Counter = () => {
         <div className="counter-wrapper">
             <div className="counter">
                 <button
+                    className="counter-button"
                     type="button"
                     onClick={minusTen}
                     disabled={isDisabledDec}
                 >
                     -10
                 </button>
-                <button type="button" onClick={dec} disabled={isDisabledDec}>
+                <button className="counter-button" type="button" onClick={dec} disabled={isDisabledDec}>
                     -1
                 </button>
                 <div className="count">{count}</div>
-                <button type="button" onClick={inc} disabled={isDisabledInc}>
+                <button className="counter-button" type="button" onClick={inc} disabled={isDisabledInc}>
                     +1
                 </button>
                 <button
+                    className="counter-button"
                     type="button"
                     onClick={plusTen}
                     disabled={isDisabledInc}

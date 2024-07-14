@@ -14,11 +14,12 @@ const App = () => {
             <Layout>
                 <Routes>
                     <Route path="/*" element={<Main />}>
-                        <Route element={<Calc />} index={true} />
+                        <Route element={<Gallery />} index={true} />
                         <Route path="gallery" element={<Gallery />} />
                         <Route path="userlist" element={<UserList />} />
                         <Route path="counter" element={<Counter />} />
                         <Route path="posts" element={<Feed />} />
+                        <Route path="calculator" element={<Calc />} />
                     </Route>
                 </Routes>
             </Layout>

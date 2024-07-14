@@ -30,7 +30,7 @@ const UserList = () => {
 
     return (
         <>
-            <button type="button" onClick={clickHandler}>
+            <button className="reload-button" type="button" onClick={clickHandler}>
                 Reload
             </button>
             {!isLoading ? (

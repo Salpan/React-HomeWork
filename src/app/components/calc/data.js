@@ -1,32 +1,66 @@
 export const arrayCalc = [
     {
-        label: "0",
-        value: 0,
+        label: "7",
         type: "numeric"
     },
     {
+        label: "8",
+        type: "numeric"
+    },
+    {
+        label: "9",
+        type: "numeric"
+    },
+    {
+        label: "AC",
+        type: "reset"
+    },
+    {
+        label: "4",
+        type: "numeric"
+    },
+    {
+        label: "5",
+        type: "numeric"
+    },
+    {
+        label: "6",
+        type: "numeric"
+    },
+    {
+        label: "/",
+        type: "function"
+    },
+    {
         label: "1",
-        value: 1,
         type: "numeric"
     },
     {
         label: "2",
-        value: 2,
         type: "numeric"
     },
     {
-        label: "reset",
-        value: 'AC',
+        label: "3",
+        type: "numeric"
+    },
+    {
+        label: "*",
         type: "function"
     },
     {
+        label: "0",
+        type: "numeric"
+    },
+    {
         label: "+",
-        value: '+',
+        type: "function"
+    },
+    {
+        label: "-",
         type: "function"
     },
     {
         label: "=",
-        value: '=',
-        type: "numeric"
+        type: "equal"
     },
 ]

@@ -6,6 +6,13 @@ td {
     border-collapse: collapse
 }
 
-button {
+.reload-button {
+    border: none;
+    height: 60px;
+    min-width: 60px;
+    border-radius: 120px;
+    cursor: pointer;
+    background-color: #b8dfff;
+    font-size: 24px;
     width: 200px;
 }
