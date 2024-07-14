@@ -35,9 +35,9 @@ import { arrayCalc } from "./consts/data";
 import "./styles.css";
 
 export const Calc = () => {
-    const [prev, setPrev] = useState("");
-    const [curr, setCurr] = useState("");
-    const [input, setInput] = useState("");
+    const [prev, setPrev] = useState("0");
+    const [curr, setCurr] = useState("0");
+    const [input, setInput] = useState("0");
     const [operator, setOperator] = useState(null);
     const [total, setTotal] = useState(false);
     // const [inputValue, setInputValue] = useState('')
