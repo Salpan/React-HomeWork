@@ -30,114 +30,174 @@
 //
 // <input onChange={onChangeHandler} />
 
-import { useEffect, useState } from "react";
-import { arrayCalc } from "./data"
-import './styles.css'
+import { useCallback, useMemo, useState } from 'react';
+import { arrayCalc } from './consts';
+import './styles.css';
 
 export const Calc = () => {
+    const [prev, setPrev] = useState('0');
+    const [curr, setCurr] = useState('0');
+    const [operator, setOperator] = useState(null);
+    const [total, setTotal] = useState(false);
 
-    const [prev, setPrev] = useState('')
-    const [curr, setCurr] = useState('')
-    const [input, setInput] = useState('')
-    const [operator, setOperator] = useState(null)
-    const [total, setTotal] = useState(false)
-    // const [inputValue, setInputValue] = useState('')
+    const onChangeHandler = useCallback((e) => {
+        setCurr(e.target.value);
+    }, []);
 
-    // const onChangeHandler = (e) => {
-    //     setInputValue(e.target.value)
-    // }
-
-    const numbers = (label) => {
-        if (total) {
-            setPrev('')
-        }
-        curr ? setCurr(prev => prev + label) : setCurr(label);
-        setTotal(false)
-    };
-
-    useEffect(() => {
-        setInput(curr)
-    }, [curr])
-
-    const operators = (label) => {
-        setTotal(false)
-        setOperator(label)
-        if (curr === "")
-            return true
-        else {
-            if (prev !== "") {
-                equals()
-            } else {
-                setPrev(curr)
-                setCurr("")
+    const addNewDigit = useCallback(
+        (value) => {
+            if (total) {
+                setPrev('0');
             }
-        }
-    };
 
-    const equals = (label) => {
-        if (label === "=") {
-            setTotal(true)
-        };
+            if (curr && curr !== '0') {
+                setCurr((prevValue) => {
+                    if (operator && prev === curr) {
+                        return String(value);
+                    }
 
-        let cal = 0
-        switch (operator) {
-            case "/":
-                cal = parseInt(prev) / parseInt(curr)
-                break
-            case "*":
-                cal = parseInt(prev) * parseInt(curr)
-                break
-            case "+":
-                cal = parseInt(prev) + parseInt(curr)
-                break
-            case "-":
-                cal = parseInt(prev) - parseInt(curr)
-                break
-            default:
-                return true
-        }
-        setInput("")
-        setPrev(cal)
-        setCurr("")
-    }
+                    return String(prevValue) + String(value);
+                });
+                setTotal(false);
+            } else {
+                setCurr(String(value));
+            }
 
-    const reset = () => {
-        setPrev("");
-        setCurr("");
-        setInput("0");
-    }
+            setTotal(false);
+        },
+        [curr, prev, total, operator],
+    );
+
+    const equals = useCallback(
+        (label) => {
+            if (label === '=') {
+                setTotal(true);
+            }
+
+            let calculatedValue = 0;
+
+            switch (operator) {
+                case '/':
+                    calculatedValue = parseInt(prev) / parseInt(curr);
+                    break;
+                case '*':
+                    calculatedValue = parseInt(prev) * parseInt(curr);
+                    break;
+                case '+':
+                    calculatedValue = parseInt(prev) + parseInt(curr);
+                    break;
+                case '-':
+                    calculatedValue = parseInt(prev) - parseInt(curr);
+                    break;
+                default:
+                    return;
+            }
+
+            setPrev(calculatedValue);
+            setCurr(calculatedValue);
+        },
+        [curr, operator, prev],
+    );
+
+    const operators = useCallback(
+        (label) => {
+            setTotal(false);
+            setOperator(label);
+
+            if (!curr) {
+                return;
+            }
+
+            if (prev !== '0') {
+                equals(label);
+            } else {
+                setPrev(curr);
+            }
+        },
+        [curr, prev, equals],
+    );
+
+    const reset = useCallback(() => {
+        setPrev('0');
+        setCurr('0');
+    }, []);
+
+    const onClickHandler = useCallback(
+        (item) => {
+            return () => {
+                switch (item.type) {
+                    case 'function': {
+                        operators(item.label);
+                        break;
+                    }
+                    case 'numeric': {
+                        addNewDigit(item.value);
+                        break;
+                    }
+                    case 'equal': {
+                        equals(item.label);
+                        break;
+                    }
+                    default: {
+                        reset();
+                    }
+                }
+            };
+        },
+        [operators, addNewDigit, equals, reset],
+    );
+
+    const buttonClassName = useMemo(
+        () => (type) => {
+            switch (type) {
+                case 'reset': {
+                    return 'reset-button';
+                }
+                case 'function': {
+                    return 'function-button';
+                }
+                case 'equal': {
+                    return 'equal-button';
+                }
+                default: {
+                    return 'num-button';
+                }
+            }
+        },
+        [],
+    );
 
     return (
         <div className="container">
-            <div className="calc">
-                <div className="input">{input !== "" || input === "0" ? input : prev}</div>
-                {/* <input onChange={onChangeHandler} /> */}
-                <div className="calc-buttons">
-                    {arrayCalc.map((item, index) => {
-                        return (
-                            <button key={index} className={
-                                item.type === "reset" ?
-                                    "reset-button" : item.type === "function" ?
-                                        "function-button" : item.type === "equal" ?
-                                            "equal-button" : "num-button"
-                            }
-                                type="button" onClick={
-                                    () => {
-                                        if (item.type === "function") {
-                                            operators(item.label)
-                                        } else if (item.type === "numeric") {
-                                            numbers(item.label)
-                                        } else if (item.type === "equal") {
-                                            equals(item.label)
-                                        } else reset()
-                                    }
-                                }>
-                                {item.label}
-                            </button >
-                        );
-                    })}
+            <div className="calc-wrapper">
+                <div className="calc">
+                    <div className="input">
+                        {curr !== '' || curr === '0' ? curr : prev}
+                    </div>
+                    <div>Prev: {prev}</div>
+                    <div>Curr: {curr}</div>
+                    <input
+                        type="number"
+                        value={curr}
+                        onChange={onChangeHandler}
+                        className="input"
+                    />
+                    <div className="calc-buttons">
+                        {arrayCalc.map((item, index) => {
+                            return (
+                                <button
+                                    key={index}
+                                    className={`base-button ${buttonClassName(item.type)}`}
+                                    type="button"
+                                    onClick={onClickHandler(item)}
+                                >
+                                    {item.label}
+                                </button>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
-        </div >
-    )
-}
+        </div>
+    );
+};
