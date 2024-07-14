@@ -31,16 +31,15 @@
 // <input onChange={onChangeHandler} />
 
 import { useEffect, useState } from "react";
-import { arrayCalc } from "./data"
-import './styles.css'
+import { arrayCalc } from "./consts/data";
+import "./styles.css";
 
 export const Calc = () => {
-
-    const [prev, setPrev] = useState('')
-    const [curr, setCurr] = useState('')
-    const [input, setInput] = useState('')
-    const [operator, setOperator] = useState(null)
-    const [total, setTotal] = useState(false)
+    const [prev, setPrev] = useState("");
+    const [curr, setCurr] = useState("");
+    const [input, setInput] = useState("");
+    const [operator, setOperator] = useState(null);
+    const [total, setTotal] = useState(false);
     // const [inputValue, setInputValue] = useState('')
 
     // const onChangeHandler = (e) => {
@@ -49,95 +48,101 @@ export const Calc = () => {
 
     const numbers = (label) => {
         if (total) {
-            setPrev('')
+            setPrev("");
         }
-        curr ? setCurr(prev => prev + label) : setCurr(label);
-        setTotal(false)
+        curr ? setCurr((prev) => prev + label) : setCurr(label);
+        setTotal(false);
     };
 
     useEffect(() => {
-        setInput(curr)
-    }, [curr])
+        setInput(curr);
+    }, [curr]);
 
     const operators = (label) => {
-        setTotal(false)
-        setOperator(label)
-        if (curr === "")
-            return true
+        setTotal(false);
+        setOperator(label);
+        if (curr === "") return true;
         else {
             if (prev !== "") {
-                equals()
+                equals();
             } else {
-                setPrev(curr)
-                setCurr("")
+                setPrev(curr);
+                setCurr("");
             }
         }
     };
 
     const equals = (label) => {
         if (label === "=") {
-            setTotal(true)
-        };
+            setTotal(true);
+        }
 
-        let cal = 0
+        let cal = 0;
         switch (operator) {
             case "/":
-                cal = parseInt(prev) / parseInt(curr)
-                break
+                cal = parseInt(prev) / parseInt(curr);
+                break;
             case "*":
-                cal = parseInt(prev) * parseInt(curr)
-                break
+                cal = parseInt(prev) * parseInt(curr);
+                break;
             case "+":
-                cal = parseInt(prev) + parseInt(curr)
-                break
+                cal = parseInt(prev) + parseInt(curr);
+                break;
             case "-":
-                cal = parseInt(prev) - parseInt(curr)
-                break
+                cal = parseInt(prev) - parseInt(curr);
+                break;
             default:
-                return true
+                return true;
         }
-        setInput("")
-        setPrev(cal)
-        setCurr("")
-    }
+        setInput("");
+        setPrev(cal);
+        setCurr("");
+    };
 
     const reset = () => {
         setPrev("");
         setCurr("");
         setInput("0");
-    }
+    };
 
     return (
         <div className="container">
             <div className="calc">
-                <div className="input">{input !== "" || input === "0" ? input : prev}</div>
+                <div className="input">
+                    {input !== "" || input === "0" ? input : prev}
+                </div>
                 {/* <input onChange={onChangeHandler} /> */}
                 <div className="calc-buttons">
                     {arrayCalc.map((item, index) => {
                         return (
-                            <button key={index} className={
-                                item.type === "reset" ?
-                                    "reset-button" : item.type === "function" ?
-                                        "function-button" : item.type === "equal" ?
-                                            "equal-button" : "num-button"
-                            }
-                                type="button" onClick={
-                                    () => {
-                                        if (item.type === "function") {
-                                            operators(item.label)
-                                        } else if (item.type === "numeric") {
-                                            numbers(item.label)
-                                        } else if (item.type === "equal") {
-                                            equals(item.label)
-                                        } else reset()
-                                    }
-                                }>
+                            <button
+                                key={index}
+                                className={
+                                    item.type === "reset"
+                                        ? "reset-button"
+                                        : item.type === "function"
+                                          ? "function-button"
+                                          : item.type === "equal"
+                                            ? "equal-button"
+                                            : "num-button"
+                                }
+                                type="button"
+                                onClick={() => {
+                                    if (item.type === "function") {
+                                        operators(item.label);
+                                    } else if (item.type === "numeric") {
+                                        numbers(item.label);
+                                    } else if (item.type === "equal") {
+                                        equals(item.label);
+                                    } else reset();
+                                }}
+                            >
                                 {item.label}
-                            </button >
+                            </button>
                         );
                     })}
                 </div>
             </div>
-        </div >
-    )
-}
+        </div>
+    );
+};
