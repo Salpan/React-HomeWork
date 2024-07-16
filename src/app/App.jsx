@@ -13,7 +13,7 @@ const App = () => {
         <BrowserRouter>
             <Layout>
                 <Routes>
-                    <Route path="/learn/*" element={<Main />}>
+                    <Route path="/*" element={<Main />}>
                         <Route element={<Gallery />} index={true} />
                         <Route path="gallery" element={<Gallery />} />
                         <Route path="userlist" element={<UserList />} />
