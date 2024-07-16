@@ -15,3 +15,13 @@ img {
     display: flex;
     justify-content: center;
 }
+
+.gallary-button {
+    border: none;
+    height: 60px;
+    min-width: 60px;
+    border-radius: 120px;
+    cursor: pointer;
+    background-color: #b8dfff;
+    font-size: 24px;
+}

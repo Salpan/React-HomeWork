@@ -12,6 +12,7 @@ export const Layout = ({ children }) => {
                     <Link to="/userlist">User List</Link>
                     <Link to="/counter">Counter</Link>
                     <Link to="/posts">Posts</Link>
+                    <Link to="/calculator">Calculator</Link>
                 </div>
             </header>
             <main>{children}</main>

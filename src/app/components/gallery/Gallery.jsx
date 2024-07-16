@@ -37,7 +37,7 @@ const Gallery = () => {
 
     return (
         <div className="gallery">
-            <button type="button" onClick={previousPhotoHandler}>
+            <button className="gallary-button" type="button" onClick={previousPhotoHandler}>
                 {"<-"}
             </button>
             <div className="photo">
@@ -47,7 +47,7 @@ const Gallery = () => {
                     <Loader loading={isLoading} />
                 )}
             </div>
-            <button type="button" onClick={nextPhotoHandler}>
+            <button className="gallary-button" type="button" onClick={nextPhotoHandler}>
                 {"->"}
             </button>
         </div>

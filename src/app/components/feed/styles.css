@@ -24,6 +24,10 @@ li {
 }
 
 .sort {
+  border: none;
+  height: 60px;
+  min-width: 60px;
+  border-radius: 120px;
   background-color: #85a1fd;
   max-width: 50px;
   font-size: xx-large;
@@ -31,6 +35,10 @@ li {
 }
 
 .noSort {
+  border: none;
+  height: 60px;
+  min-width: 60px;
+  border-radius: 120px;
   background-color: #aaa8a8;
   max-width: 50px;
   font-size: xx-large;

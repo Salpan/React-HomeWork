@@ -1,0 +1,123 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+
+.container {
+    padding-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.calc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2px;
+}
+
+.calc-wrapper {
+    padding: 25px;
+    width: 300px;
+    border: 1px solid;
+    border-radius: 5px;
+    background-color: rgb(243, 249, 255);
+}
+
+.input {
+    padding: 0.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    background-color: white;
+    height: 48px;
+    border: 1px;
+    border-radius: 5px;
+    border-style: solid;
+    text-align: right;
+    font-size: 32px;
+    width: 100%;
+}
+
+.calc-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2px;
+}
+
+.base-button {
+    flex-grow: 1;
+    border: 1px;
+    font-size: 26px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 6px;
+    height: 80px;
+    width: 65px;
+}
+
+.base-button.num-button {
+    background-color: white;
+}
+
+.base-button.num-button:hover {
+    background-color: lightgray;
+}
+
+.base-button.num-button:active {
+    background-color: gray;
+}
+
+.base-button.reset-button {
+    background-color: rgb(255, 88, 88);
+}
+
+.base-button.reset-button:hover {
+    background-color: rgb(128, 43, 43);
+}
+
+.base-button.reset-button:active {
+    background-color: rgb(95, 32, 32);
+}
+
+.base-button.function-button {
+    background-color: rgb(250, 206, 84);
+}
+
+.base-button.function-button:hover {
+    background-color: rgb(165, 135, 54);
+}
+
+.base-button.function-button:active {
+    background-color: rgb(122, 100, 39);
+}
+
+.base-button.equal-button {
+    background-color: rgb(114, 152, 255);
+}
+
+.base-button.equal-button:hover {
+    background-color: rgb(91, 122, 206);
+}
+
+.base-button.equal-button:active {
+    background-color: rgb(70, 94, 158);
+}
+
+.operation-view {
+    height: 20px;
+    font-size: 14px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    color: gray;
+}
