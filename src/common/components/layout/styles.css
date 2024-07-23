@@ -8,6 +8,8 @@ header {
 }
 
 main {
+  padding-top: 15px;
+  padding-left: 20px;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
