@@ -11,7 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { lightBlue } from "@mui/material/colors";
+
 
 
 
@@ -50,7 +50,7 @@ const UserList = () => {
                 <TableContainer component={Paper} sx={{ maxWidth: 1000, minWidth: 600 }}>
                     <Table sx={{ maxWidth: 1000, minWidth: 600 }} aria-label="simple table">
                         <TableHead>
-                            <TableRow key={1} sx={{ color: lightBlue }}>
+                            <TableRow key={1}>
                                 <TableCell>#</TableCell>
                                 <TableCell align="left">Name</TableCell>
                                 <TableCell align="left">Phone</TableCell>

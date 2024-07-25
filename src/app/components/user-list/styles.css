@@ -2,3 +2,8 @@
     height: 50px;
     width: 200px;
 }
+
+.MuiTableHead-root {
+    font-size: xx-large;
+    background-color: #cfc9c9;
+}
