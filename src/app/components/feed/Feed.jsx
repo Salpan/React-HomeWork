@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 
 const url = "https://jsonplaceholder.typicode.com/posts";
 
@@ -27,7 +29,9 @@ export const Feed = () => {
                 type="button"
                 onClick={onClick}
             >
-                {isClick === true ? `↑` : `↓`}
+                {isClick === true ?
+                    < KeyboardDoubleArrowUpIcon /> :
+                    <KeyboardDoubleArrowDownIcon />}
             </button>
             <ul>
                 {post.map((post) => {

@@ -43,7 +43,9 @@ const UserList = () => {
 
     return (
         <>
-            <Button className="reload-button" variant="contained" onClick={clickHandler} startIcon={<CachedIcon />}>
+            <Button sx={{ color: "black", backgroundColor: "#5dccf8", borderRadius: 8 }}
+                className="reload-button" variant="contained" onClick={clickHandler}
+                startIcon={<CachedIcon />}>
                 Reload
             </Button >
             {!isLoading ? (
