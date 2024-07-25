@@ -2,15 +2,6 @@ import { useCallback, useLayoutEffect, useState } from "react";
 
 import "./styles.css";
 
-/**
- * HomeWork:
- * 1) Значение каунтера не должно быть отрицательным.
- * 2) Добавить кнопку обнуления каунтера.
- * 3) Добавить кнопки изменения значения на +10 и -10.
- * 4) При достижении значения 50, кнопка "Больше" должна заблокироваться.
- * 5) Значение каунтера не должно никогда превышать 50.
- */
-
 export const Counter = () => {
     const [count, setCount] = useState(0);
     const [isDisabledInc, setIsDisabledInc] = useState(false);
