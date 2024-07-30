@@ -13,8 +13,6 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
 
-
-
 const url = "https://jsonplaceholder.typicode.com/users";
 
 const UserList = () => {
@@ -52,10 +50,10 @@ const UserList = () => {
                 <TableContainer component={Paper} sx={{ maxWidth: 1000, minWidth: 600 }}>
                     <Table sx={{ maxWidth: 1000, minWidth: 600 }} aria-label="simple table">
                         <TableHead>
-                            <TableRow key={1}>
-                                <TableCell>#</TableCell>
-                                <TableCell align="left">Name</TableCell>
-                                <TableCell align="left">Phone</TableCell>
+                            <TableRow key={1} sx={{ backgroundColor: "#cfc9c9", fontWeight: "bold" }}>
+                                <TableCell sx={{ fontWeight: "bold", fontSize: 16 }}>#</TableCell>
+                                <TableCell align="left" sx={{ fontWeight: "bold", fontSize: 16 }}>Name</TableCell>
+                                <TableCell align="left" sx={{ fontWeight: "bold", fontSize: 16 }}>Phone</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
