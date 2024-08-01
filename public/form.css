@@ -7,6 +7,7 @@
     border-radius: 15px;
     background-color: antiquewhite;
     padding: 25px 25px;
+    row-gap: 18px;
 }
 
 .formWrapper {
