@@ -8,10 +8,13 @@
     font-size: 20px;
 }
 
-.submit-btn {
+.div-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: start;
-    flex-grow: 1;
+    align-items: center;
+}
+
+.div-cullom {
+    display: flex;
+    flex-direction: row;
 }
