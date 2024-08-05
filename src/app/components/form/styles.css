@@ -1,4 +1,17 @@
 .form-box {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registration {
+    font-size: 20px;
+}
+
+.submit-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    flex-grow: 1;
 }

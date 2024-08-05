@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import { useEffect, useState } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import './styles.css'
+import { Button } from '@mui/material';
 
 export const Form = () => {
 
@@ -24,18 +25,19 @@ export const Form = () => {
 
     return (
         <div className='form-box'>
+            <p className='registration'>
+                Регистрация на Tiffany.ru
+            </p>
             <Box
                 component="form"
                 sx={{
-                    '& .MuiTextField-root': { m: 1, width: "250px" },
+                    '& .MuiTextField-root': { m: 2, width: "260px" },
                     display: "flex",
-                    alignContent: "center",
+                    flexDirection: "column",
                     alignItems: "center",
-                    justifyContent: "center",
-                    flexWrap: "100%",
                     border: "1px solid",
                     borderRadius: "4px",
-                    width: "600px"
+                    width: "600px",
                 }}
                 noValidate
                 autoComplete="off"
@@ -69,6 +71,15 @@ export const Form = () => {
                         id="outlined-multiline-static"
                         label="О себе"
                         multiline
+                        rows={4}
+                    />
+                </div>
+                <div className='submit-btn'>
+                    <TextField
+                        sx={{ backgroundColor: '#5dccf8' }}
+                        type='submit'
+                        id="outlined-multiline-static"
+                        value='Регистрация'
                         rows={4}
                     />
                 </div>
