@@ -4,9 +4,23 @@ import { useEffect, useState } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import { useForm, Controller, useFormState } from "react-hook-form"
+import { Validation } from './validation';
 import './styles.css'
 
 export const Form = () => {
+
+    const { handleSubmit, control } = useForm({
+        mode: 'onChange',
+        defaultValues: {
+            lastName: '',
+            firstName: ''
+        }
+    })
+
+    const { errors } = useFormState({ control })
+
+    const onSubmit = (data) => console.log(data)
 
     const url = "https://raw.githubusercontent.com/arbaev/russia-cities/master/russia-cities.json"
 
@@ -26,6 +40,7 @@ export const Form = () => {
                 Регистрация на Tiffany.ru
             </p>
             <Box
+                onSubmit={handleSubmit(onSubmit)}
                 component='form'
                 sx={{
                     '& .MuiTextField-root': { m: 2, width: '260px' },
@@ -40,15 +55,33 @@ export const Form = () => {
                 autoComplete='off'
             >
                 <div>
-                    <TextField
-                        required
-                        id='outlined-required'
-                        label='Фамилия'
+                    <Controller
+                        control={control}
+                        name='lastName'
+                        rules={Validation}
+                        render={({ field: { onChange, value } }) => (
+                            <TextField
+                                label='Фамилия'
+                                onChange={onChange}
+                                value={value}
+                                error={errors.lastName?.message}
+                                helperText={errors.lastName?.message}
+                            />
+                        )}
                     />
-                    <TextField
-                        required
-                        id='outlined-required'
-                        label='Имя'
+                    <Controller
+                        control={control}
+                        name='firstName'
+                        rules={{ required: 'Обязательно для заполнения' }}
+                        render={({ field: { onChange, value } }) => (
+                            <TextField
+                                label='Имя'
+                                onChange={onChange}
+                                value={value}
+                                error={errors.firstName?.message}
+                                helperText={errors.firstName?.message}
+                            />
+                        )}
                     />
                 </ div>
                 <div className='div-cullom'>
@@ -85,7 +118,6 @@ export const Form = () => {
                         type='submit'
                         id='outlined-multiline-static'
                         value='Регистрация'
-                        rows={4}
                     />
                 </div>
             </Box>
