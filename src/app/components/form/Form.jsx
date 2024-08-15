@@ -143,7 +143,7 @@ export const Form = () => {
                                 onChange={onChange}
                                 label='О себе'
                                 multiline
-                                rows={4}
+                                rows={5}
                             />
                         )}
                     />
