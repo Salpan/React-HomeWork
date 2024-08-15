@@ -6,15 +6,26 @@ import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useForm, Controller, useFormState } from "react-hook-form"
 import { Validation } from './validation';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+
 import './styles.css'
 
 export const Form = () => {
+
+    // const [value, setValue] = useState(null)
 
     const { handleSubmit, control } = useForm({
         mode: 'onChange',
         defaultValues: {
             lastName: '',
-            firstName: ''
+            firstName: '',
+            date: null,
+            about: '',
+            city: '',
+            vip: false
         }
     })
 
@@ -36,7 +47,7 @@ export const Form = () => {
 
     return (
         <div className='form-box'>
-            <p className='registration'>
+            <p className='registration-header'>
                 Регистрация на Tiffany.ru
             </p>
             <Box
@@ -72,7 +83,7 @@ export const Form = () => {
                     <Controller
                         control={control}
                         name='firstName'
-                        rules={{ required: 'Обязательно для заполнения' }}
+                        rules={Validation}
                         render={({ field: { onChange, value } }) => (
                             <TextField
                                 label='Имя'
@@ -86,32 +97,70 @@ export const Form = () => {
                 </ div>
                 <div className='div-cullom'>
                     <div className='div-wrapper'>
-                        <TextField
-                            id='outlined-select-currency'
-                            select
-                            label='Ваш город'
-                            defaultValue=''
-                        >
-                            {cities.map((city) =>
-                                <MenuItem key={city.id} value={city.name}>
-                                    {city.name}
-                                </MenuItem>
+                        <Controller
+                            control={control}
+                            name='city'
+                            rules={Validation}
+                            render={({ field: { onChange, value } }) => (
+                                <TextField
+                                    id='outlined-select-currency'
+                                    onChange={onChange}
+                                    select
+                                    label='Ваш город'
+                                    defaultValue=''
+                                    value={value}
+                                >
+                                    {cities.map((city) =>
+                                        <MenuItem key={city.id} value={city.name}>
+                                            {city.name}
+                                        </MenuItem>
+                                    )}
+                                </TextField>
                             )}
-                        </TextField>
-                        <FormControlLabel
-                            value="start"
-                            control={<Checkbox />}
-                            label="Я от Сенса"
-                            labelPlacement="start"
                         />
+                        <LocalizationProvider dateAdapter={AdapterDayjs}>
+                            <DemoContainer components={['DatePicker']}>
+                                <Controller
+                                    control={control}
+                                    name='date'
+                                    render={({ field: { onChange, value } }) => (
+                                        <DatePicker
+                                            value={value}
+                                            label='Дата рождения'
+                                            onChange={onChange} />
+                                    )}
+                                />
+                            </DemoContainer>
+                        </LocalizationProvider>
                     </div>
-                    <TextField
-                        id='outlined-multiline-static'
-                        label='О себе'
-                        multiline
-                        rows={4}
+                    <Controller
+                        control={control}
+                        name='about'
+                        render={({ field: { onChange, value } }) => (
+                            <TextField
+                                id='outlined-multiline-static'
+                                value={value}
+                                onChange={onChange}
+                                label='О себе'
+                                multiline
+                                rows={4}
+                            />
+                        )}
                     />
                 </div>
+                <Controller
+                    control={control}
+                    name='vip'
+                    render={({ field: { onChange, value } }) => (
+                        <FormControlLabel
+                            value={value}
+                            onChange={onChange}
+                            control={<Checkbox />}
+                            label='Я от Сенса'
+                            labelPlacement='start'
+                        />
+                    )}
+                />
                 <div className='div-wrapper'>
                     <TextField
                         sx={{ backgroundColor: '#5dccf8', borderRadius: '5px' }}
