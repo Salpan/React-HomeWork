@@ -1,0 +1,57 @@
+.context-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.context-main-text {
+    max-width: 560px;
+}
+
+.context-commentary-wrapper {
+    width: 560px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 8px;
+}
+
+.context-commentary {
+    height: 40px;
+    display: flex;
+    flex-wrap: nowrap;
+    border: 1 solid black;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 255, 0.2);
+}
+
+.contex-commentary-text {
+    margin-right: 8px;
+}
+
+.contex-commentary-heart {
+    display: flex;
+    align-items: end;
+    column-gap: 4px;
+    font-size: 16pt;
+    cursor: pointer;
+}
+
+.context-comment-likes-counter {
+    color: black;
+}
+
+.contex-commentary-heart:hover {
+    color: pink;
+}
+
+.contex-commentary-heart:active {
+    color: red;
+}
+
+.prevent-select {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
