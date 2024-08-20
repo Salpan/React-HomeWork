@@ -1,5 +1,5 @@
 
-export const Validation = {
+export const validation = {
 
     required: 'Обязательно для заполнения',
     validate: (value) => {

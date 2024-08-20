@@ -11,7 +11,7 @@ export const Layout = ({ children }) => {
         <div className="wrapper">
             <header>
                 <h1>Welcome to my first React App</h1>
-                <h2>Choos app</h2>
+                <h2>Choose app</h2>
                 <div>
                     <Box sx={{ flexGrow: 1 }}>
                         <AppBar position="static">

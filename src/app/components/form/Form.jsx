@@ -5,17 +5,15 @@ import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useForm, Controller, useFormState } from "react-hook-form"
-import { Validation } from './validation';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { validation } from './validation';
 
 import './styles.css'
 
 export const Form = () => {
-
-    // const [value, setValue] = useState(null)
 
     const { handleSubmit, control } = useForm({
         mode: 'onChange',
@@ -69,7 +67,7 @@ export const Form = () => {
                     <Controller
                         control={control}
                         name='lastName'
-                        rules={Validation}
+                        rules={validation}
                         render={({ field: { onChange, value } }) => (
                             <TextField
                                 label='Фамилия'
@@ -83,7 +81,7 @@ export const Form = () => {
                     <Controller
                         control={control}
                         name='firstName'
-                        rules={Validation}
+                        rules={validation}
                         render={({ field: { onChange, value } }) => (
                             <TextField
                                 label='Имя'
@@ -100,7 +98,7 @@ export const Form = () => {
                         <Controller
                             control={control}
                             name='city'
-                            rules={Validation}
+                            rules={validation}
                             render={({ field: { onChange, value } }) => (
                                 <TextField
                                     id='outlined-select-currency'
