@@ -27,7 +27,7 @@ const App = () => {
                 </Route>
                 <Route path="/profile" element={<Profile />}>
                     <Route element={<ProfileDashboard />} index />
-                    <Route path=":teamId/:id" element={<ProfileDashboard />} />
+                    <Route path=":id" element={<ProfileDashboard />} />
                     <Route path="security" element={<ProfileSecurity />} />
                     <Route
                         path="settings"

@@ -11,6 +11,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+
 import { useNavigate } from 'react-router-dom';
 
 const url = 'https://jsonplaceholder.typicode.com/users';
@@ -102,7 +103,7 @@ const UserList = () => {
                             {userList.map((user, index) => (
                                 <TableRow
                                     key={user.id}
-                                    onClick={rowClickHandler(user.id)}
+                                    onClick={rowClickHandler}
                                 >
                                     <TableCell align="left">
                                         {index + 1}

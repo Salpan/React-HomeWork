@@ -5,7 +5,7 @@ import { Layout } from '../../../common/components/layout/Layout';
 export const Main = () => {
     return (
         <Layout>
-            <Outlet />;
+            <Outlet />
         </Layout>
     );
 };
