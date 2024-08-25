@@ -1,14 +1,15 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import "./styles.css";
-import { Loader } from "../../../common/components/loader/Loader";
+import './styles.css';
+import { Loader } from '../../../common/components/loader/Loader';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Button } from '@mui/material';
 
-const url = "https://jsonplaceholder.typicode.com/photos";
+const url = 'https://jsonplaceholder.typicode.com/photos';
 
 const Gallery = () => {
     const [photoId, setPhotoId] = useState(1);
-    const [photoUrl, setPhotoUrl] = useState("");
+    const [photoUrl, setPhotoUrl] = useState('');
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
@@ -38,9 +39,13 @@ const Gallery = () => {
 
     return (
         <div className="gallery">
-            <button className="gallary-button" type="button" onClick={previousPhotoHandler}>
+            <Button
+                className="gallary-button"
+                type="button"
+                onClick={previousPhotoHandler}
+            >
                 {<ArrowBackIcon />}
-            </button>
+            </Button>
             <div className="photo">
                 {!isLoading ? (
                     <img src={photoUrl} alt={`#${photoId}`} />
@@ -48,9 +53,13 @@ const Gallery = () => {
                     <Loader loading={isLoading} />
                 )}
             </div>
-            <button className="gallary-button" type="button" onClick={nextPhotoHandler}>
+            <Button
+                className="gallary-button"
+                type="button"
+                onClick={nextPhotoHandler}
+            >
                 {<ArrowForwardIcon />}
-            </button>
+            </Button>
         </div>
     );
 };
