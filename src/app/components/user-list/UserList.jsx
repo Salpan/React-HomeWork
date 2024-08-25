@@ -103,7 +103,7 @@ const UserList = () => {
                             {userList.map((user, index) => (
                                 <TableRow
                                     key={user.id}
-                                    onClick={rowClickHandler}
+                                    onClick={rowClickHandler(user.id)}
                                 >
                                     <TableCell align="left">
                                         {index + 1}
