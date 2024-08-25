@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import "./styles.css";
 import { Loader } from "../../../common/components/loader/Loader";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 const url = "https://jsonplaceholder.typicode.com/photos";
 
@@ -38,7 +39,7 @@ const Gallery = () => {
     return (
         <div className="gallery">
             <button className="gallary-button" type="button" onClick={previousPhotoHandler}>
-                {"<-"}
+                {<ArrowBackIcon />}
             </button>
             <div className="photo">
                 {!isLoading ? (
@@ -48,7 +49,7 @@ const Gallery = () => {
                 )}
             </div>
             <button className="gallary-button" type="button" onClick={nextPhotoHandler}>
-                {"->"}
+                {<ArrowForwardIcon />}
             </button>
         </div>
     );

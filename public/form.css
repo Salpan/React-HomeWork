@@ -1,0 +1,17 @@
+.registration {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    max-width: 300px;
+    border: 1px solid;
+    border-radius: 15px;
+    background-color: antiquewhite;
+    padding: 25px 25px;
+    row-gap: 18px;
+}
+
+.formWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

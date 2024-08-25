@@ -1,18 +1,4 @@
-table,
-th,
-td {
-    border: 1px solid;
-    max-width: 600px;
-    border-collapse: collapse
-}
-
 .reload-button {
-    border: none;
-    height: 60px;
-    min-width: 60px;
-    border-radius: 120px;
-    cursor: pointer;
-    background-color: #b8dfff;
-    font-size: 24px;
+    height: 50px;
     width: 200px;
 }

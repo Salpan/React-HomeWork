@@ -1,6 +1,17 @@
 import { useCallback, useEffect, useState } from "react";
 import "./styles.css";
 import { Loader } from "../../../common/components/loader/Loader";
+import { Button } from "@mui/material";
+import CachedIcon from '@mui/icons-material/Cached';
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
 
 const url = "https://jsonplaceholder.typicode.com/users";
 
@@ -30,33 +41,38 @@ const UserList = () => {
 
     return (
         <>
-            <button className="reload-button" type="button" onClick={clickHandler}>
+            <Button sx={{ color: "black", backgroundColor: "#5dccf8", borderRadius: 8 }}
+                className="reload-button" variant="contained" onClick={clickHandler}
+                startIcon={<CachedIcon />}>
                 Reload
-            </button>
+            </Button >
             {!isLoading ? (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Name</th>
-                            <th>Phone</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {userList.map((user, index) => {
-                            return (
-                                <tr key={user.id}>
-                                    <td>{index + 1}</td>
-                                    <td>{user.name}</td>
-                                    <td>{user.phone}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                <TableContainer component={Paper} sx={{ maxWidth: 1000, minWidth: 600 }}>
+                    <Table sx={{ maxWidth: 1000, minWidth: 600 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow key={1} sx={{ backgroundColor: "#cfc9c9", fontWeight: "bold" }}>
+                                <TableCell sx={{ fontWeight: "bold", fontSize: 16 }}>#</TableCell>
+                                <TableCell align="left" sx={{ fontWeight: "bold", fontSize: 16 }}>Name</TableCell>
+                                <TableCell align="left" sx={{ fontWeight: "bold", fontSize: 16 }}>Phone</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {userList.map((user, index) => (
+                                <TableRow
+                                    key={user.id}
+                                >
+                                    <TableCell align="left">{index + 1}</TableCell>
+                                    <TableCell align="left">{user.name}</TableCell>
+                                    <TableCell align="left">{user.phone}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
             ) : (
                 <Loader loading={isLoading} />
-            )}
+            )
+            }
         </>
     );
 };

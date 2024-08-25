@@ -1,0 +1,20 @@
+.form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.registration-header {
+    font-size: 20px;
+}
+
+.div-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.div-cullom {
+    display: flex;
+    flex-direction: row;
+}

@@ -7,6 +7,7 @@ import { Layout } from "../common/components/layout/Layout";
 import { Feed } from "./components/feed/Feed";
 import { Main } from "./components/main/Main";
 import { Calc } from "./components/calc/Calc";
+import { Form } from "./components/form/Form";
 
 const App = () => {
     return (
@@ -20,6 +21,7 @@ const App = () => {
                         <Route path="counter" element={<Counter />} />
                         <Route path="posts" element={<Feed />} />
                         <Route path="calculator" element={<Calc />} />
+                        <Route path="form" element={<Form />} />
                     </Route>
                 </Routes>
             </Layout>
