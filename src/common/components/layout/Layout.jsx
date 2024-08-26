@@ -22,6 +22,7 @@ export const Layout = ({ children }) => {
                                 <Button component={Link} to="/posts" color="inherit">Posts</Button>
                                 <Button component={Link} to="/calculator" color="inherit">Calculator</Button>
                                 <Button component={Link} to="/form" color="inherit">Form</Button>
+                                <Button component={Link} to="/context" color="inherit">Commentary</Button>
                             </Toolbar>
                         </AppBar>
                     </Box>
