@@ -1,16 +1,22 @@
-import { memo } from "react"
+import { memo, useContext } from "react"
 
 import '../../styles.css'
 import { useState } from "react"
 import { useCallback } from "react"
+import { LikesContext } from "../../ContextApiPage"
 
 
 export const Commentary = ({ text }) => {
     const [likes, setLikes] = useState(0)
+    const { addLikes } = useContext(LikesContext)
 
     const handleClick = useCallback(() => {
-        setLikes((prev) => prev + 1)
-    }, [setLikes])
+        setLikes((prev) => {
+            const newValue = prev + 1
+            addLikes(newValue)
+            return newValue
+        })
+    }, [addLikes])
 
     return (
         <div className="context-commentary">
