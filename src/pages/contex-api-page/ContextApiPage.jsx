@@ -3,7 +3,7 @@ import Commentary from "./components/commentary/Commentary"
 import "./styles.css"
 
 export const LikesContext = createContext({
-    likes: 0
+    allLikes: 0
 })
 
 export const ContextApiPage = () => {
@@ -15,7 +15,7 @@ export const ContextApiPage = () => {
     }
 
     return (
-        <LikesContext.Provider value={{ likes: likesCounter, addLikes }}>
+        <LikesContext.Provider value={{ allLikes: likesCounter, addLikes }}>
             < div className="context-wrapper" >
                 <h3>Context API learning</h3>
                 <div className="context-main-text">

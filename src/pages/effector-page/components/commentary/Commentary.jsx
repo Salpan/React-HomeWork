@@ -1,19 +1,18 @@
-import { memo, useContext } from "react"
+import { memo } from "react"
 
 import '../../styles.css'
 import { useState } from "react"
 import { useCallback } from "react"
-import { LikesContext } from "../../ContextApiPage"
+import { incLikesEv } from "../../../../models/likes/likes"
 
 
 export const Commentary = ({ text }) => {
     const [likes, setLikes] = useState(0)
-    const { addLikes, allLikes } = useContext(LikesContext)
 
     const handleClick = useCallback(() => {
+        incLikesEv()
         setLikes((prev) => prev + 1)
-        addLikes()
-    }, [addLikes])
+    }, [])
 
     return (
         <div className="context-commentary">
@@ -22,7 +21,7 @@ export const Commentary = ({ text }) => {
                 className="context-commentary-heart prevent-select"
                 onClick={handleClick}
             >
-                <div className="context-comment-likes-counter">{likes} {allLikes}</div>
+                <div className="context-comment-likes-counter">{likes}</div>
                 <span>❤︎</span>
             </div>
         </div>

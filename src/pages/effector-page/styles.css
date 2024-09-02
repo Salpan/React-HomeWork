@@ -1,15 +1,15 @@
-.context-wrapper {
+.effector-wrapper {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
     align-items: center;
 }
 
-.context-main-text {
+.effector-main-text {
     width: 560px;
 }
 
-.context-commentary-wrapper {
+.effector-commentary-wrapper {
     width: 560px;
     display: flex;
     flex-grow: 1;
@@ -18,7 +18,7 @@
     row-gap: 8px;
 }
 
-.context-commentary {
+.effector-commentary {
     height: 40px;
     display: flex;
     flex-wrap: nowrap;
@@ -27,11 +27,11 @@
     box-shadow: 2px 2px 4px rgba(0, 0, 255, 0.2);
 }
 
-.context-commentary-text {
+.effector-commentary-text {
     margin-right: 8px;
 }
 
-.context-commentary-heart {
+.effector-commentary-heart {
     display: flex;
     align-items: end;
     column-gap: 4px;
@@ -39,15 +39,15 @@
     cursor: pointer;
 }
 
-.context-comment-likes-counter {
+.effector-comment-likes-counter {
     color: black;
 }
 
-.context-commentary-heart:hover {
+.effector-commentary-heart:hover {
     color: pink;
 }
 
-.context-commentary-heart:active {
+.effector-commentary-heart:active {
     color: red;
 }
 
