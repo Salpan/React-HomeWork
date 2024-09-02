@@ -1,5 +1,5 @@
 import { createEffect, createEvent, createStore } from "effector";
-import { getComments } from "../../services/api";
+import { getComments } from "../../services/coments/api";
 
 export const $comments = createStore([]);
 

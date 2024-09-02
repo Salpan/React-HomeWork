@@ -6,7 +6,7 @@ import { useCallback } from "react"
 import { incLikesEv } from "../../../../models/likes/likes"
 
 
-export const Commentary = ({ text }) => {
+export const Commentary = ({ text, style }) => {
     const [likes, setLikes] = useState(0)
 
     const handleClick = useCallback(() => {
@@ -15,13 +15,13 @@ export const Commentary = ({ text }) => {
     }, [])
 
     return (
-        <div className="context-commentary">
-            <div className="context-commentary-text">{text}</div>
+        <div className="effector-commentary" style={style}>
+            <div className="effector-commentary-text">{text}</div>
             <div
-                className="context-commentary-heart prevent-select"
+                className="effector-commentary-heart prevent-select"
                 onClick={handleClick}
             >
-                <div className="context-comment-likes-counter">{likes}</div>
+                <div className="effector-comment-likes-counter">{likes}</div>
                 <span>❤︎</span>
             </div>
         </div>
