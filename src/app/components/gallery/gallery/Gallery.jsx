@@ -4,8 +4,6 @@ import "./styles.css";
 import { Loader } from "../../../../common/components/loader/Loader";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Button } from "@mui/material";
-import { GalleryUrl } from "../components";
-import { getPictureEv } from "../../../../models/gallery/gallary";
 
 const url = "https://jsonplaceholder.typicode.com/photos";
 
@@ -13,10 +11,6 @@ const Gallery = () => {
     const [photoId, setPhotoId] = useState(1);
     const [photoUrl, setPhotoUrl] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-
-    useEffect(() => {
-        getPictureEv()
-    }, [])
 
     useEffect(() => {
         setIsLoading(true);
@@ -50,7 +44,7 @@ const Gallery = () => {
             </Button>
             <div className="photo">
                 {!isLoading ? (
-                    <GalleryUrl />
+                    <img src={photoUrl} alt="Oh shit" />
                 ) : (
                     <Loader loading={isLoading} />
                 )}
