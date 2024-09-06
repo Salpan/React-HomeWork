@@ -1,0 +1,62 @@
+.effector-wrapper {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+}
+
+.effector-main-text {
+    width: 560px;
+}
+
+.effector-commentary-wrapper {
+    width: 720px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: start;
+    row-gap: 8px;
+    margin-top: 26px;
+}
+
+.effector-commentary {
+    max-width: 280px;
+    display: flex;
+    flex-wrap: nowrap;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 255, 0.2);
+}
+
+.effector-commentary-text {
+    margin-right: 8px;
+}
+
+.effector-commentary-heart {
+    display: flex;
+    align-items: end;
+    column-gap: 4px;
+    font-size: 16pt;
+    cursor: pointer;
+}
+
+.effector-comment-likes-counter {
+    color: black;
+}
+
+.effector-commentary-heart:hover {
+    color: pink;
+}
+
+.effector-commentary-heart:active {
+    color: red;
+}
+
+.prevent-select {
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}

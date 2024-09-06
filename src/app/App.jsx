@@ -8,6 +8,9 @@ import { Feed } from "./components/feed/Feed";
 import { Main } from "./components/main/Main";
 import { Calc } from "./components/calc/Calc";
 import { Form } from "./components/form/Form";
+import { ContextApiPage } from "../pages/contex-api-page/ContextApiPage";
+import { EffectorPage } from "../pages/effector-page/EffectorPage";
+import '../models/init'
 
 const App = () => {
     return (
@@ -22,6 +25,8 @@ const App = () => {
                         <Route path="posts" element={<Feed />} />
                         <Route path="calculator" element={<Calc />} />
                         <Route path="form" element={<Form />} />
+                        <Route path="context" element={<ContextApiPage />} />
+                        <Route path="effector" element={<EffectorPage />} />
                     </Route>
                 </Routes>
             </Layout>

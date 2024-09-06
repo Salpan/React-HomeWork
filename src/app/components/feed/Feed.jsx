@@ -2,24 +2,21 @@ import { useEffect, useState } from "react";
 import "./styles.css";
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
+import { $posts, getPostsEv } from "../../../models/feeds/posts";
+import { useUnit } from "effector-react";
 
-const url = "https://jsonplaceholder.typicode.com/posts";
 
 export const Feed = () => {
-    const [post, setPost] = useState([]);
     const [isClick, setIsClick] = useState(true);
+    const posts = useUnit($posts)
 
     useEffect(() => {
-        fetch(url)
-            .then((r) => r.json())
-            .then((data) => {
-                setPost(data);
-            });
-    }, []);
+        getPostsEv()
+    }, [])
 
     const onClick = () => {
         setIsClick((prev) => !prev);
-        setPost((prev) => prev.reverse());
+        posts.reverse();
     };
 
     return (
@@ -34,7 +31,7 @@ export const Feed = () => {
                     <KeyboardDoubleArrowDownIcon />}
             </button>
             <ul>
-                {post.map((post) => {
+                {posts.map((post) => {
                     return (
                         <li key={post.id}>
                             <p>ID: {post.id}</p>

@@ -1,56 +1,52 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import "./styles.css";
-import { Loader } from "../../../common/components/loader/Loader";
+import './styles.css';
+import { Loader } from '../../../common/components/loader/Loader';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-
-const url = "https://jsonplaceholder.typicode.com/photos";
+import { Button } from '@mui/material';
+import { Picture } from './components';
+import {
+    getPictureEv,
+    getPictureUrlFx,
+    nextPhotoIdEv,
+    prevPhotoIdEv,
+} from '../../../models/gallery/gallary';
+import { useUnit } from 'effector-react';
 
 const Gallery = () => {
-    const [photoId, setPhotoId] = useState(1);
-    const [photoUrl, setPhotoUrl] = useState("");
-    const [isLoading, setIsLoading] = useState(false);
+    const isPending = useUnit(getPictureUrlFx.pending);
 
     useEffect(() => {
-        setIsLoading(true);
-
-        fetch(`${url}/${photoId}`)
-            .then((r) => r.json())
-            .then((data) => {
-                setPhotoUrl(data.url);
-                setIsLoading(false);
-            });
-    }, [photoId]);
+        getPictureEv();
+    }, []);
 
     const previousPhotoHandler = useCallback(() => {
-        setPhotoId((prev) => {
-            if (prev <= 1) {
-                return 1;
-            }
-
-            return prev - 1;
-        });
+        prevPhotoIdEv();
     }, []);
 
     const nextPhotoHandler = useCallback(() => {
-        setPhotoId((prev) => prev + 1);
+        nextPhotoIdEv();
     }, []);
 
     return (
         <div className="gallery">
-            <button className="gallary-button" type="button" onClick={previousPhotoHandler}>
+            <Button
+                className="gallary-button"
+                type="button"
+                onClick={previousPhotoHandler}
+            >
                 {<ArrowBackIcon />}
-            </button>
+            </Button>
             <div className="photo">
-                {!isLoading ? (
-                    <img src={photoUrl} alt={`#${photoId}`} />
-                ) : (
-                    <Loader loading={isLoading} />
-                )}
+                {!isPending ? <Picture /> : <Loader loading={isPending} />}
             </div>
-            <button className="gallary-button" type="button" onClick={nextPhotoHandler}>
+            <Button
+                className="gallary-button"
+                type="button"
+                onClick={nextPhotoHandler}
+            >
                 {<ArrowForwardIcon />}
-            </button>
+            </Button>
         </div>
     );
 };

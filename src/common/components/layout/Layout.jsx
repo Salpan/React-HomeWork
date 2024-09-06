@@ -11,7 +11,7 @@ export const Layout = ({ children }) => {
         <div className="wrapper">
             <header>
                 <h1>Welcome to my first React App</h1>
-                <h2>Choos app</h2>
+                <h2>Choose app</h2>
                 <div>
                     <Box sx={{ flexGrow: 1 }}>
                         <AppBar position="static">
@@ -22,6 +22,8 @@ export const Layout = ({ children }) => {
                                 <Button component={Link} to="/posts" color="inherit">Posts</Button>
                                 <Button component={Link} to="/calculator" color="inherit">Calculator</Button>
                                 <Button component={Link} to="/form" color="inherit">Form</Button>
+                                <Button component={Link} to="/context" color="inherit">Commentary by Context</Button>
+                                <Button component={Link} to="/effector" color="inherit">Commentary by Effector</Button>
                             </Toolbar>
                         </AppBar>
                     </Box>
