@@ -1,14 +1,18 @@
-import { createEffect, createEvent, createStore } from "effector";
-import { getPicture } from "../../services/gallary/api";
+import { createEffect, createEvent, createStore } from 'effector';
+import { getPictureUrl } from '../../services/gallary/api';
 
-export const $galleryUrl = createStore(null)
+export const $galleryUrl = createStore(null);
 
-export const getPictureEv = createEvent(getPicture)
+export const getPictureEv = createEvent('getPictureEv');
 
-export const getPictureFx = createEffect(getPicture)
+export const getPictureUrlFx = createEffect(getPictureUrl);
 
-export const $photoId = createStore(1)
+export const $photoId = createStore(1);
 
-export const nextPhotoIdEv = createEvent('nextPhotoIdEv')
+export const nextPhotoIdEv = createEvent('nextPhotoIdEv');
 
-$photoId.on(nextPhotoIdEv, (state) => state + 1)
+export const prevPhotoIdEv = createEvent('prevPhotoIdEv');
+
+$photoId
+    .on(nextPhotoIdEv, (state) => state + 1)
+    .on(prevPhotoIdEv, (state) => state - 1);
