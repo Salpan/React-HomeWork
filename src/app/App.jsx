@@ -1,16 +1,16 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Counter } from "./components/counter/Counter";
-import Gallery from "./components/gallery/Gallery";
-import UserList from "./components/user-list/UserList";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Counter } from './components/counter/Counter';
+import Gallery from '../pages/gallery/Gallery';
+import UserList from './components/user-list/UserList';
 
-import { Layout } from "../common/components/layout/Layout";
-import { Feed } from "./components/feed/Feed";
-import { Main } from "./components/main/Main";
-import { Calc } from "./components/calc/Calc";
-import { Form } from "./components/form/Form";
-import { ContextApiPage } from "../pages/contex-api-page/ContextApiPage";
-import { EffectorPage } from "../pages/effector-page/EffectorPage";
-import '../models/init'
+import { Layout } from '../common/components/layout/Layout';
+import { Feed } from './components/feed/Feed';
+import { Main } from './components/main/Main';
+import { Calc } from './components/calc/Calc';
+import { Form } from './components/form/Form';
+import { ContextApiPage } from '../pages/contex-api-page/ContextApiPage';
+import { EffectorPage } from '../pages/effector-page/EffectorPage';
+import '../models/init';
 
 const App = () => {
     return (
