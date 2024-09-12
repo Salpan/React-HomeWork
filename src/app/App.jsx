@@ -31,6 +31,7 @@ const App = () => {
                 </Route>
                 <Route path="/profile" element={<Profile />}>
                     <Route element={<ProfileDashboard />} index />
+                    <Route path=":id" element={<ProfileDashboard />} />
                     <Route path="security" element={<ProfileSecurity />} index />
                     <Route path="settings" element={<ProfileSettings />} index />
                 </Route>

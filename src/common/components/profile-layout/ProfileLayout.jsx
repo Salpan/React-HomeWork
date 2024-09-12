@@ -1,11 +1,18 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import './styles.css'
 import cn from 'classnames'
+import { useCallback } from 'react'
 
 const ProfileLayout = ({ children }) => {
+    const navigate = useNavigate()
+
+    const handleBackClick = useCallback(() => {
+        navigate(-1)
+    }, [navigate])
+
     return (
         <div className="profile-wrapper">
-            <div className="profile-main-menu">
+            <nav className="profile-main-menu">
                 <NavLink className={({ isActive }) => cn('profile-menu-item', { ['nav-active']: isActive })}
                     to='' end
                 >
@@ -25,7 +32,8 @@ const ProfileLayout = ({ children }) => {
                 >
                     Settings
                 </ NavLink>
-            </div>
+                <button onClick={handleBackClick} className={cn('clear-btn', 'profile-menu-item')} type='button'>Back</button>
+            </nav>
             <div className="profile-content">
                 {children}
             </div>

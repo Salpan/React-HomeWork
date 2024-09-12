@@ -36,3 +36,16 @@
     padding: 6px 4px;
     background-color: chartreuse;
 }
+
+button.clear-btn {
+    background: none;
+    color: inherit;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    font-weight: 550;
+    padding: 6px 4px;
+    text-align: left;
+    font-size: large;
+}
