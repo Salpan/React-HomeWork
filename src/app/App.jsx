@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Counter } from "./components/counter/Counter";
-import Gallery from "./components/gallery/gallery/Gallery";
+import Gallery from "./components/gallery/Gallery";
 import UserList from "./components/user-list/UserList";
 import { Feed } from "./components/feed/Feed";
 import { Main } from "./components/main/Main";
