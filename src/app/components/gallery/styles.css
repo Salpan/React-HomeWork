@@ -1,35 +1,17 @@
 img {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
 }
 
 .gallery {
     display: flex;
-    align-items: center;
+    justify-content: center;
     column-gap: 16px;
     height: 300px;
 }
 
 .photo {
-    min-width: 300px;
+    min-width: px;
     display: flex;
     justify-content: center;
-}
-
-.gallary-button {
-    border: none;
-    height: 60px;
-    min-width: 60px;
-    border-radius: 120px;
-    cursor: pointer;
-    background-color: #5dccf8;
-    font-size: 24px;
-}
-
-.gallary-button:hover {
-    background-color: #9be3ff;
-}
-
-.gallary-button:active {
-    background-color: #70a0b3;
 }

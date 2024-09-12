@@ -1,23 +1,19 @@
-import { sample } from 'effector';
-import {
-    $galleryUrl,
-    $photoId,
-    getPictureEv,
-    getPictureUrlFx,
-} from './gallary';
+import { sample } from "effector";
+import { $picture, $pictureId, getPictureEv, getPictureFx } from "./gallery";
 
 sample({
-    clock: $photoId,
-    target: getPictureEv,
-});
+    clock: $pictureId,
+    target: getPictureEv
+})
 
 sample({
     clock: getPictureEv,
-    target: getPictureUrlFx,
-});
+    target: getPictureFx
+})
 
 sample({
-    clock: getPictureUrlFx.doneData,
+    clock: getPictureFx.doneData,
     fn: (message) => message,
-    target: $galleryUrl,
-});
+    target: $picture
+})
+

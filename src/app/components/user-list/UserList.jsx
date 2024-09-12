@@ -11,11 +11,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { useNavigate } from "react-router-dom";
 
 
 const url = "https://jsonplaceholder.typicode.com/users";
 
 const UserList = () => {
+    const navigate = useNavigate()
     const [userList, setUserList] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [reload, setReload] = useState(false);
@@ -39,6 +41,10 @@ const UserList = () => {
         setIsLoading(userList.length === 0);
     }, [userList]);
 
+    const rowClickHandler = useCallback((id) => () => {
+        navigate(`/profile/${id}`)
+    }, [navigate])
+
     return (
         <>
             <Button sx={{ color: "black", backgroundColor: "#5dccf8", borderRadius: 8 }}
@@ -59,6 +65,7 @@ const UserList = () => {
                         <TableBody>
                             {userList.map((user, index) => (
                                 <TableRow
+                                    onClick={rowClickHandler(user.id)}
                                     key={user.id}
                                 >
                                     <TableCell align="left">{index + 1}</TableCell>

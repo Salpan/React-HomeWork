@@ -1,10 +1,12 @@
-import { useUnit } from 'effector-react';
-import { $galleryUrl } from '../../../../models/gallery/gallary';
+import { useUnit } from "effector-react"
+import { $picture } from "../../../../models/gallery/gallery"
 
-export const Picture = () => {
-    const galleryUrl = useUnit($galleryUrl);
 
-    return (
-        <img src={galleryUrl} alt="user" style={{ objectFit: 'scale-down' }} />
-    );
-};
+const Picture = () => {
+    const pictureUrl = useUnit($picture)
+
+    return <img style={{ objectFit: 'scale-down' }} src={pictureUrl} alt="sorry...smth wrong" />
+
+}
+
+export default Picture
