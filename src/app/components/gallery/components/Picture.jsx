@@ -5,7 +5,7 @@ import { $picture } from "../../../../models/gallery/gallery"
 const Picture = () => {
     const pictureUrl = useUnit($picture)
 
-    return <img style={{ objectFit: 'scale-down' }} src={pictureUrl} alt="sorry...smth wrong" />
+    return <img className="dog-picture" src={pictureUrl} alt="sorry...smth wrong" />
 
 }
 

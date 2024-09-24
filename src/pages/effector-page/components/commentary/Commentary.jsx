@@ -4,9 +4,10 @@ import '../../styles.css'
 import { useState } from "react"
 import { useCallback } from "react"
 import { incLikesEv } from "../../../../models/likes/likes"
+import { EffectorCommentary, EffectorCommentaryText } from "../styledComponents"
 
 
-export const Commentary = ({ text, style }) => {
+export const Commentary = ({ text, theme }) => {
     const [likes, setLikes] = useState(0)
 
     const handleClick = useCallback(() => {
@@ -15,8 +16,8 @@ export const Commentary = ({ text, style }) => {
     }, [])
 
     return (
-        <div className="effector-commentary" style={style}>
-            <div className="effector-commentary-text">{text}</div>
+        <EffectorCommentary theme={theme}>
+            <EffectorCommentaryText theme={theme}>{text}</EffectorCommentaryText>
             <div
                 className="effector-commentary-heart prevent-select"
                 onClick={handleClick}
@@ -24,7 +25,7 @@ export const Commentary = ({ text, style }) => {
                 <div className="effector-comment-likes-counter">{likes}</div>
                 <span>❤︎</span>
             </div>
-        </div>
+        </EffectorCommentary>
     )
 }
 
