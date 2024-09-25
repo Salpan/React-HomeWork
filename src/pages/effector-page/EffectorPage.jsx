@@ -20,6 +20,8 @@ export const EffectorPage = () => {
         getAllCommentsEv()
     }, [])
 
+
+
     return (
         <EffectorWrapper theme={theme}>
             <Header theme={theme}>Effector API learning</Header>
