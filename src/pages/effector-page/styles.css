@@ -19,20 +19,6 @@
     margin-top: 26px;
 }
 
-.effector-commentary {
-    max-width: 280px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    border-radius: 8px;
-    padding: 12px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 255, 0.2);
-}
-
-.effector-commentary-text {
-    margin-right: 8px;
-}
-
 .effector-commentary-heart {
     display: flex;
     align-self: end;
@@ -60,4 +46,8 @@
     /* IE 10 and IE 11 */
     user-select: none;
     /* Standard syntax */
+}
+
+.try {
+    color: rgb(58, 58, 58)
 }
