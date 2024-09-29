@@ -1,26 +1,30 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom"
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const ProfileDashboard = () => {
-    const url = "https://jsonplaceholder.typicode.com/users";
+    const url = 'https://jsonplaceholder.typicode.com/users';
 
-    const { id } = useParams()
-    const [user, setUser] = useState()
+    const { id } = useParams();
+    const [user, setUser] = useState();
 
     useEffect(() => {
-        fetch(`${url}/${id}`)
-            .then((r) => r.json())
-            .then((data) => setUser(data));
-    }, [id])
+        if (id) {
+            fetch(`${url}/${id}`)
+                .then((r) => r.json())
+                .then((data) => setUser(data));
+        }
+    }, [id]);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return (
         <>
             {JSON.stringify(user, 2, 2)}
-            <button onClick={() => navigate('/')} type="button" >Go to main manu</button>
+            <button onClick={() => navigate('/')} type="button">
+                Go to main manu
+            </button>
         </>
-    )
-}
+    );
+};
 
-export default ProfileDashboard
+export default ProfileDashboard;
