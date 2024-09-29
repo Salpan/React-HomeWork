@@ -1,23 +1,27 @@
-import { memo } from "react"
+import { memo } from 'react';
 
-import '../../styles.css'
-import { useState } from "react"
-import { useCallback } from "react"
-import { incLikesEv } from "../../../../models/likes/likes"
-import { EffectorCommentary, EffectorCommentaryText } from "../styledComponents"
-
+import '../../styles.css';
+import { useState } from 'react';
+import { useCallback } from 'react';
+import { incLikesEv } from '../../../../models/likes/likes';
+import {
+    EffectorCommentary,
+    EffectorCommentaryText,
+} from '../styledComponents';
 
 export const Commentary = ({ text, theme }) => {
-    const [likes, setLikes] = useState(0)
+    const [likes, setLikes] = useState(0);
 
     const handleClick = useCallback(() => {
-        incLikesEv()
-        setLikes((prev) => prev + 1)
-    }, [])
+        incLikesEv();
+        setLikes((prev) => prev + 1);
+    }, []);
 
     return (
         <EffectorCommentary theme={theme}>
-            <EffectorCommentaryText theme={theme}>{text}</EffectorCommentaryText>
+            <EffectorCommentaryText theme={theme}>
+                {text}
+            </EffectorCommentaryText>
             <div
                 className="effector-commentary-heart prevent-select"
                 onClick={handleClick}
@@ -26,7 +30,7 @@ export const Commentary = ({ text, theme }) => {
                 <span>❤︎</span>
             </div>
         </EffectorCommentary>
-    )
-}
+    );
+};
 
-export default memo(Commentary)
+export default memo(Commentary);

@@ -1,4 +1,3 @@
-
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { arrayCalc } from './consts';
 import './styles.css';

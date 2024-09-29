@@ -1,6 +1,6 @@
-import { useCallback, useLayoutEffect, useState } from "react";
+import { useCallback, useLayoutEffect, useState } from 'react';
 
-import "./styles.css";
+import './styles.css';
 
 export const Counter = () => {
     const [count, setCount] = useState(0);
@@ -67,11 +67,21 @@ export const Counter = () => {
                 >
                     -10
                 </button>
-                <button className="counter-button" type="button" onClick={dec} disabled={isDisabledDec}>
+                <button
+                    className="counter-button"
+                    type="button"
+                    onClick={dec}
+                    disabled={isDisabledDec}
+                >
                     -1
                 </button>
                 <div className="count">{count}</div>
-                <button className="counter-button" type="button" onClick={inc} disabled={isDisabledInc}>
+                <button
+                    className="counter-button"
+                    type="button"
+                    onClick={inc}
+                    disabled={isDisabledInc}
+                >
                     +1
                 </button>
                 <button

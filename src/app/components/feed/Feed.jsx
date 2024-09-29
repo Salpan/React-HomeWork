@@ -1,18 +1,17 @@
-import { useEffect, useState } from "react";
-import "./styles.css";
+import { useEffect, useState } from 'react';
+import './styles.css';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
-import { $posts, getPostsEv } from "../../../models/feeds/posts";
-import { useUnit } from "effector-react";
-
+import { $posts, getPostsEv } from '../../../models/feeds/posts';
+import { useUnit } from 'effector-react';
 
 export const Feed = () => {
     const [isClick, setIsClick] = useState(true);
-    const posts = useUnit($posts)
+    const posts = useUnit($posts);
 
     useEffect(() => {
-        getPostsEv()
-    }, [])
+        getPostsEv();
+    }, []);
 
     const onClick = () => {
         setIsClick((prev) => !prev);
@@ -22,13 +21,15 @@ export const Feed = () => {
     return (
         <>
             <button
-                className={isClick === true ? "sort" : "noSort"}
+                className={isClick === true ? 'sort' : 'noSort'}
                 type="button"
                 onClick={onClick}
             >
-                {isClick === true ?
-                    < KeyboardDoubleArrowUpIcon /> :
-                    <KeyboardDoubleArrowDownIcon />}
+                {isClick === true ? (
+                    <KeyboardDoubleArrowUpIcon />
+                ) : (
+                    <KeyboardDoubleArrowDownIcon />
+                )}
             </button>
             <ul>
                 {posts.map((post) => {
