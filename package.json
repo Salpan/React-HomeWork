@@ -28,6 +28,10 @@
     },
     "devDependencies": {
         "@babel/plugin-transform-modules-commonjs": "^7.24.8",
+        "@eslint/js": "^9.11.1",
+        "eslint": "^8.57.1",
+        "eslint-plugin-react": "^7.37.0",
+        "globals": "^15.9.0",
         "jest": "^27.5.1"
     },
     "scripts": {
@@ -37,7 +41,9 @@
         "eject": "react-scripts eject",
         "format": "prettier **/*.js **/*.jsx --write",
         "jest": "jest",
-        "jest:cov": "jest --coverage"
+        "jest:cov": "jest --coverage",
+        "lint": "npx eslint .",
+        "lint:fix": "npx eslint . --fix"
     },
     "eslintConfig": {
         "extends": [

@@ -1,9 +1,5 @@
 const ProfileSecurity = () => {
-    return (
-        <>
-            Security
-        </>
-    )
-}
+    return <>Security</>;
+};
 
-export default ProfileSecurity
+export default ProfileSecurity;

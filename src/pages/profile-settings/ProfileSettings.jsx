@@ -1,9 +1,5 @@
 const ProfileSettings = () => {
-    return (
-        <>
-            Settings
-        </>
-    )
-}
+    return <>Settings</>;
+};
 
-export default ProfileSettings
+export default ProfileSettings;

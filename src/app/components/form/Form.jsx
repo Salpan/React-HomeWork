@@ -4,17 +4,16 @@ import { useEffect, useState } from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import { useForm, Controller, useFormState } from "react-hook-form"
+import { useForm, Controller, useFormState } from 'react-hook-form';
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { validation } from './validation';
 
-import './styles.css'
+import './styles.css';
 
 export const Form = () => {
-
     const { handleSubmit, control } = useForm({
         mode: 'onChange',
         defaultValues: {
@@ -23,34 +22,33 @@ export const Form = () => {
             date: null,
             about: '',
             city: '',
-            vip: false
-        }
-    })
+            vip: false,
+        },
+    });
 
-    const { errors } = useFormState({ control })
+    const { errors } = useFormState({ control });
 
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = (data) => console.log(data);
 
-    const url = "https://raw.githubusercontent.com/arbaev/russia-cities/master/russia-cities.json"
+    const url =
+        'https://raw.githubusercontent.com/arbaev/russia-cities/master/russia-cities.json';
 
-    const [cities, setCity] = useState([])
+    const [cities, setCity] = useState([]);
 
     useEffect(() => {
         fetch(url)
             .then((r) => r.json())
             .then((data) => {
-                setCity((data.sort((a, b) => a.name > b.name ? 1 : -1)));
-            })
+                setCity(data.sort((a, b) => (a.name > b.name ? 1 : -1)));
+            });
     }, []);
 
     return (
-        <div className='form-box'>
-            <p className='registration-header'>
-                Регистрация на Tiffany.ru
-            </p>
+        <div className="form-box">
+            <p className="registration-header">Регистрация на Tiffany.ru</p>
             <Box
                 onSubmit={handleSubmit(onSubmit)}
-                component='form'
+                component="form"
                 sx={{
                     '& .MuiTextField-root': { m: 2, width: '260px' },
                     display: 'flex',
@@ -61,16 +59,16 @@ export const Form = () => {
                     width: '600px',
                 }}
                 noValidate
-                autoComplete='off'
+                autoComplete="off"
             >
                 <div>
                     <Controller
                         control={control}
-                        name='lastName'
+                        name="lastName"
                         rules={validation}
                         render={({ field: { onChange, value } }) => (
                             <TextField
-                                label='Фамилия'
+                                label="Фамилия"
                                 onChange={onChange}
                                 value={value}
                                 error={errors.lastName?.message}
@@ -80,11 +78,11 @@ export const Form = () => {
                     />
                     <Controller
                         control={control}
-                        name='firstName'
+                        name="firstName"
                         rules={validation}
                         render={({ field: { onChange, value } }) => (
                             <TextField
-                                label='Имя'
+                                label="Имя"
                                 onChange={onChange}
                                 value={value}
                                 error={errors.firstName?.message}
@@ -92,27 +90,30 @@ export const Form = () => {
                             />
                         )}
                     />
-                </ div>
-                <div className='div-cullom'>
-                    <div className='div-wrapper'>
+                </div>
+                <div className="div-cullom">
+                    <div className="div-wrapper">
                         <Controller
                             control={control}
-                            name='city'
+                            name="city"
                             rules={validation}
                             render={({ field: { onChange, value } }) => (
                                 <TextField
-                                    id='outlined-select-currency'
+                                    id="outlined-select-currency"
                                     onChange={onChange}
                                     select
-                                    label='Ваш город'
-                                    defaultValue=''
+                                    label="Ваш город"
+                                    defaultValue=""
                                     value={value}
                                 >
-                                    {cities.map((city) =>
-                                        <MenuItem key={city.id} value={city.name}>
+                                    {cities.map((city) => (
+                                        <MenuItem
+                                            key={city.id}
+                                            value={city.name}
+                                        >
                                             {city.name}
                                         </MenuItem>
-                                    )}
+                                    ))}
                                 </TextField>
                             )}
                         />
@@ -120,12 +121,15 @@ export const Form = () => {
                             <DemoContainer components={['DatePicker']}>
                                 <Controller
                                     control={control}
-                                    name='date'
-                                    render={({ field: { onChange, value } }) => (
+                                    name="date"
+                                    render={({
+                                        field: { onChange, value },
+                                    }) => (
                                         <DatePicker
                                             value={value}
-                                            label='Дата рождения'
-                                            onChange={onChange} />
+                                            label="Дата рождения"
+                                            onChange={onChange}
+                                        />
                                     )}
                                 />
                             </DemoContainer>
@@ -133,13 +137,13 @@ export const Form = () => {
                     </div>
                     <Controller
                         control={control}
-                        name='about'
+                        name="about"
                         render={({ field: { onChange, value } }) => (
                             <TextField
-                                id='outlined-multiline-static'
+                                id="outlined-multiline-static"
                                 value={value}
                                 onChange={onChange}
-                                label='О себе'
+                                label="О себе"
                                 multiline
                                 rows={5}
                             />
@@ -148,26 +152,26 @@ export const Form = () => {
                 </div>
                 <Controller
                     control={control}
-                    name='vip'
+                    name="vip"
                     render={({ field: { onChange, value } }) => (
                         <FormControlLabel
                             value={value}
                             onChange={onChange}
                             control={<Checkbox />}
-                            label='Я от Сенса'
-                            labelPlacement='start'
+                            label="Я от Сенса"
+                            labelPlacement="start"
                         />
                     )}
                 />
-                <div className='div-wrapper'>
+                <div className="div-wrapper">
                     <TextField
                         sx={{ backgroundColor: '#5dccf8', borderRadius: '5px' }}
-                        type='submit'
-                        id='outlined-multiline-static'
-                        value='Регистрация'
+                        type="submit"
+                        id="outlined-multiline-static"
+                        value="Регистрация"
                     />
                 </div>
             </Box>
-        </ div>
-    )
-}
+        </div>
+    );
+};
