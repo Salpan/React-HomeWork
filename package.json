@@ -27,13 +27,18 @@
         "styled-components": "^6.1.13",
         "web-vitals": "^2.1.4"
     },
+    "devDependencies": {
+        "@babel/plugin-transform-modules-commonjs": "^7.24.8",
+        "jest": "^27.5.1"
+    },
     "scripts": {
         "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "format": "prettier **/*.js **/*.jsx --write",
-        "jest": "jest"
+        "jest": "jest",
+        "jest:cov": "jest --coverage"
     },
     "eslintConfig": {
         "extends": [
@@ -52,9 +57,5 @@
             "last 1 firefox version",
             "last 1 safari version"
         ]
-    },
-    "devDependencies": {
-        "@babel/plugin-transform-modules-commonjs": "^7.24.8",
-        "jest": "^27.5.1"
     }
 }
