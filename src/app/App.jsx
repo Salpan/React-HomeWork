@@ -13,6 +13,7 @@ import { Profile } from '../pages/profile';
 import { ProfileSecurity } from '../pages/profile-security';
 import { ProfileSettings } from '../pages/profile-settings';
 import { ProfileDashboard } from '../pages/profile-dashboard';
+import React from 'react';
 
 const App = () => {
     return (
