@@ -8,9 +8,10 @@ const ProfileDashboard = () => {
     const [user, setUser] = useState()
 
     useEffect(() => {
-        fetch(`${url}/${id}`)
-            .then((r) => r.json())
-            .then((data) => setUser(data));
+        if (id)
+            fetch(`${url}/${id}`)
+                .then((r) => r.json())
+                .then((data) => setUser(data));
     }, [id])
 
     const navigate = useNavigate()
@@ -18,7 +19,17 @@ const ProfileDashboard = () => {
     return (
         <>
             {JSON.stringify(user, 2, 2)}
-            <button onClick={() => navigate('/')} type="button" >Go to main manu</button>
+            <button style={{
+                backgroundColor: '#007bff',
+                color: '#fff',
+                border: 'none',
+                padding: '10px 20px',
+                cursor: 'pointer',
+                borderRadius: '5px',
+                transition: 'backgroundColor 0.3 ease',
+                width: '200px',
+                alignSelf: 'center'
+            }} onClick={() => navigate('/')} type="button" >Go to main manu</button>
         </>
     )
 }
